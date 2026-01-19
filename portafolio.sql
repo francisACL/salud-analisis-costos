@@ -12,8 +12,8 @@ on a.centro_id = cs.centro_id
 where a.estado = 'realizada'
 group by cs.nombre_centro
 order by gasto_total desc;
-#“Sumé el costo de todas las atenciones realizadas por cada centro,
-#descartando cancelaciones y asegurando que valores faltantes no distorsionen el gasto total.”
+#Sumé el costo de todas las atenciones realizadas por cada centro,
+#descartando cancelaciones y asegurando que valores faltantes no distorsionen el gasto total.
 
 
 
@@ -25,8 +25,8 @@ and especialidad is not null
 group by especialidad
 order by gasto_total desc;
 
-#“Calculé el gasto total por especialidad considerando solo atenciones efectivamente realizadas,
-#excluyendo registros incompletos para evitar distorsiones en el ranking.”
+#Calculé el gasto total por especialidad considerando solo atenciones efectivamente realizadas,
+#excluyendo registros incompletos para evitar distorsiones en el ranking.
 
 #3.¿Qué pacientes concentran el MAYOR gasto total?
 select p.nombre, sum(coalesce(a.costo,0)) as gasto_total
@@ -38,8 +38,8 @@ and p.nombre is not null
 group by p.nombre
 order by gasto_total desc;
 
-#“Identifiqué a los pacientes con mayor gasto total, considerando solo atenciones realizadas y 
-#controlando valores nulos para evitar distorsiones.”
+#Identifiqué a los pacientes con mayor gasto total, considerando solo atenciones realizadas y 
+#controlando valores nulos para evitar distorsiones.
 
 #4.Centros cuyo gasto total es MAYOR que el promedio general de gasto
 select nombre_centro, sum(coalesce(a.costo,0)) as gasto_total
